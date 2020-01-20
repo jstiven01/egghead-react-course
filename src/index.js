@@ -9,7 +9,19 @@ import ReactDOM from 'react-dom';
     children: 'Hello M** World'
 }); */
 
-const element = <div className='container'> Hello JSX World</div>
+//const element = <div className='container'> Hello JSX World</div>
+
+//Selclosing REact elememt
+const content = 'Hello Self Tag Element'
+const className = 'container'
+const props = {
+    className: className,
+    children: content
+}
+
+const element = (
+    <div {...props} />
+);
 
 console.log(element);
 
