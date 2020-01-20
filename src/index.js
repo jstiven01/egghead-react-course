@@ -86,7 +86,7 @@ const element = (
 ; 
 */
 // Making Function component Box
-function Box({style, ...rest}){
+/* function Box({style, ...rest}){
     console.log(style)
     return (
         <div
@@ -103,11 +103,46 @@ const element = (
             small box
         </Box>
     </div>
-)
+) */
+const state = {eventCount: 0, username: ''}
 
+function App(){
+    return (
+        <div>
+            <p>
+                There have been {state.eventCount} events
+            </p>
+            <p>
+                <button onClick={increment}>This is a button</button>
+            </p>
+            <p>You typed: {state.username}</p>
+            <p>
+                <input onChange={updateUsername} />
+            </p>
+        </div>
 
+    )
+}
+function increment(){
+    setState({
+        eventCount: state.eventCount + 1,
+    })
+}
+
+function updateUsername (event){
+    setState({username: event.target.value,})
+}
+
+function setState(newState) {
+    Object.assign(state, newState)
+    renderApp()
+}
+
+function renderApp() {
 //ReactDOM.render(<SayHelloAsComponent firstName='Friedrich React' lastName='Deleuze Component' />, document.getElementById('root'));
-ReactDOM.render(element
+ReactDOM.render(<App />
     , document.getElementById('root')
 )
+}
 
+renderApp()
