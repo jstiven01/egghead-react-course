@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 //import './index.css';
 //import App from './App';
 //import * as serviceWorker from './serviceWorker';
@@ -23,15 +24,29 @@ const element = (
     <div {...props} />
 ); */
 
-const Message = props => <div>{props.msg}</div>
+/* const Message = props => <div>{props.msg}</div>
 const element = (
     <div className="container">
         <Message msg="Hello JSX with Props" />
         <Message msg="Wonderful IT" />
     </div>
 );
+ */
 
-console.log(element);
+//Function component
+function SayHelloAsFunction(props){
+    return (
+        <div>
+            Hello {props.firstName} {props.lastName}
+        </div>
+    )
+}
 
-ReactDOM.render(element, document.getElementById('root'));
+//Validation PropTypes
+SayHelloAsFunction.propTypes ={
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+}
+
+ReactDOM.render(<SayHelloAsFunction firstName='Friedrich' lastName='Deleuze' />, document.getElementById('root'));
 
