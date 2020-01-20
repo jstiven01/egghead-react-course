@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 //import './index.css';
 //import App from './App';
 //import * as serviceWorker from './serviceWorker';
@@ -47,7 +47,7 @@ SayHelloAsFunction.propTypes ={
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
 } */
-
+/* 
 class SayHelloAsComponent extends React.Component {
     static propTypes = {
         firstName: PropTypes.string.isRequired,
@@ -61,7 +61,25 @@ class SayHelloAsComponent extends React.Component {
             </div>
         )
     }
+} */
+
+function Message({message}){
+    return(
+        <div>
+            {
+                message ? (
+                    <div>{message}</div>
+                ) : (
+                    <div>NO Message because of Null</div>
+                )
+            }
+        </div>
+    )
 }
 
-ReactDOM.render(<SayHelloAsComponent firstName='Friedrich React' lastName='Deleuze Component' />, document.getElementById('root'));
+
+//ReactDOM.render(<SayHelloAsComponent firstName='Friedrich React' lastName='Deleuze Component' />, document.getElementById('root'));
+ReactDOM.render(<Message message={null} />
+    , document.getElementById('root')
+)
 
