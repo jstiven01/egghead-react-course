@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //import PropTypes from 'prop-types';
-//import './index.css';
+import './index.css';
 //import App from './App';
 //import * as serviceWorker from './serviceWorker';
 
@@ -63,7 +63,7 @@ class SayHelloAsComponent extends React.Component {
     }
 } */
 
-function Message({message}){
+/* function Message({message}){
     return(
         <div>
             {
@@ -75,11 +75,39 @@ function Message({message}){
             }
         </div>
     )
+} */
+
+
+/*  Basic CSS Styling
+const element = (
+    <div>
+        <div className='box box--small' style={{paddingLeft:'20px'}}>box</div>
+    </div>
+; 
+*/
+// Making Function component Box
+function Box({style, ...rest}){
+    console.log(style)
+    return (
+        <div
+        className= "box box--small"
+        style={{paddingLeft:20, ...style}}
+        {...rest}
+        />
+    )
 }
+// CHECK STYLED COMPONENTS, EMOTION and GLAMOROUS
+const element = (
+    <div>
+        <Box style={{backgroundColor: 'lightblue'}} >
+            small box
+        </Box>
+    </div>
+)
 
 
 //ReactDOM.render(<SayHelloAsComponent firstName='Friedrich React' lastName='Deleuze Component' />, document.getElementById('root'));
-ReactDOM.render(<Message message={null} />
+ReactDOM.render(element
     , document.getElementById('root')
 )
 
