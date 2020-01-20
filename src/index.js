@@ -34,7 +34,7 @@ const element = (
  */
 
 //Function component
-function SayHelloAsFunction(props){
+/* function SayHelloAsFunction(props){
     return (
         <div>
             Hello {props.firstName} {props.lastName}
@@ -46,7 +46,22 @@ function SayHelloAsFunction(props){
 SayHelloAsFunction.propTypes ={
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
+} */
+
+class SayHelloAsComponent extends React.Component {
+    static propTypes = {
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+    }
+    render() {
+        const {firstName, lastName} = this.props
+        return (
+            <div>
+                Hello React component {firstName} {lastName}
+            </div>
+        )
+    }
 }
 
-ReactDOM.render(<SayHelloAsFunction firstName='Friedrich' lastName='Deleuze' />, document.getElementById('root'));
+ReactDOM.render(<SayHelloAsComponent firstName='Friedrich React' lastName='Deleuze Component' />, document.getElementById('root'));
 
