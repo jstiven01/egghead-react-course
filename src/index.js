@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom';
 //const element = <div className='container'> Hello JSX World</div>
 
 //Selclosing REact elememt
-const content = 'Hello Self Tag Element'
+/* const content = 'Hello Self Tag Element'
 const className = 'container'
 const props = {
     className: className,
@@ -21,6 +21,14 @@ const props = {
 
 const element = (
     <div {...props} />
+); */
+
+const Message = props => <div>{props.msg}</div>
+const element = (
+    <div className="container">
+        <Message msg="Hello JSX with Props" />
+        <Message msg="Wonderful IT" />
+    </div>
 );
 
 console.log(element);
