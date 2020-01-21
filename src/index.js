@@ -104,7 +104,7 @@ const element = (
         </Box>
     </div>
 ) */
-const state = {eventCount: 0, username: ''}
+/* const state = {eventCount: 0, username: ''}
 
 function App(){
     return (
@@ -146,3 +146,29 @@ ReactDOM.render(<App />
 }
 
 renderApp()
+ */
+
+ //Use Class Components with React
+
+ class Counter extends React.Component {
+     state = {
+         count: 0
+     }
+     handleClick = () => {
+         this.setState(({count}) => ({
+             count: count + 1,
+         }))
+     }
+
+     render(){
+         return (
+             <button onClick={this.handleClick}>
+                 {this.state.count}
+             </button>
+         )
+     }
+ }
+
+ ReactDOM.render(
+     <Counter />, document.getElementById('root')
+ )
