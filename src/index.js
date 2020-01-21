@@ -150,7 +150,7 @@ renderApp()
 
  //Use Class Components with React
 
- class Counter extends React.Component {
+/*  class Counter extends React.Component {
      state = {
          count: 0
      }
@@ -167,8 +167,30 @@ renderApp()
              </button>
          )
      }
+ } */
+ 
+ // Basic Forms with React
+ class NameForm extends React.Component {
+     handleSubmit = event => {
+         event.preventDefault();
+         console.log({target: event.target});
+         console.log('event[]: ',event.target[0].value);
+         console.log('event.elements: ',event.target.elements.username.value)
+         console.log('this input',this.inputNode.value)
+     }
+
+     render(){
+         return (
+             <form onSubmit={this.handleSubmit}>
+                 <label>Name : </label>
+                 <input type="text" name="username" ref={node => (this.inputNode = node)}/>
+                 <button type="submit">Submit</button>
+             </form>
+         )
+     }
+
  }
 
  ReactDOM.render(
-     <Counter />, document.getElementById('root')
+     <NameForm />, document.getElementById('root')
  )
