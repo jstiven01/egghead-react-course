@@ -171,6 +171,8 @@ renderApp()
  
  // Basic Forms with React
  class NameForm extends React.Component {
+     // state = {error: this.props.getErrorMessage('')} using this instead of componentDiMount
+     state = {error:null}
      handleSubmit = event => {
          event.preventDefault();
          console.log({target: event.target});
@@ -178,13 +180,27 @@ renderApp()
          console.log('event.elements: ',event.target.elements.username.value)
          console.log('this input',this.inputNode.value)
      }
+     handleChange = event => {
+         const {value} = event.target
+         this.setState({
+             error: this.props.getErrorMessage(value)
+            })
+     }
+     componentDidMount(){
+        this.setState({
+            error: this.props.getErrorMessage('')
+           })
+     }
 
      render(){
+         const {error} = this.state
+         console.log('err', error)
          return (
              <form onSubmit={this.handleSubmit}>
                  <label>Name : </label>
-                 <input type="text" name="username" ref={node => (this.inputNode = node)}/>
-                 <button type="submit">Submit</button>
+                 <input type="text" onChange={this.handleChange} name="username" ref={node => (this.inputNode = node)}/>
+                 {error ? <div style={{color: 'red'}}>{error}</div>: null}
+                 <button disabled={Boolean(error)} type="submit">Submit</button>
              </form>
          )
      }
@@ -192,5 +208,13 @@ renderApp()
  }
 
  ReactDOM.render(
-     <NameForm />, document.getElementById('root')
+     <NameForm  getErrorMessage={value => {
+         if(value.length < 3){
+             return 'Value must be at least 3 characters'
+         }
+         if(!value.includes('s')){
+             return 'Value does not include s'
+         }
+         return null
+     }}/>, document.getElementById('root')
  )
